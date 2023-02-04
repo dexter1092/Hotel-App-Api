@@ -30,9 +30,12 @@ function addUser(req, res) {
 		created_by 		: req.userData.user_id,
 		created_on		: new Date(),
 		updated_by		: req.userData.user_id,
-		updated_on		: new Date()
+		updated_on		: new Date(),
+		picture			: req.body.picture
 	}
 
+	console.log(arrmixUser);
+	
 
 	userModel.insert(sql, arrmixUser, function (err, result) {
 		if (err) {

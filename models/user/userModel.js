@@ -9,6 +9,7 @@ const User = function (user) {
 	this.updated_on = user.updated_on;
 	this.created_by = user.created_by;
 	this.updated_by = Date.now();
+	this.picture = user.picture;
 };
 
 User.findByEmail = (email_id, sql, result) => {
@@ -22,7 +23,7 @@ User.findByEmail = (email_id, sql, result) => {
 }
 
 User.getUsers = ( sql, result) => {
-	sql.query("SELECT u.id, u.name, u.name, u.email_id,u.status,u.created_on,u.created_by,u.updated_on,u.updated_by,ut.name as user_type_name FROM users u JOIN user_types ut ON (ut.id = u.user_type_id)", 
+	sql.query("SELECT u.id, u.name, u.name, u.email_id,u.status,u.created_on,u.created_by,u.updated_on,u.updated_by, u.picture ,ut.name as user_type_name FROM users u JOIN user_types ut ON (ut.id = u.user_type_id)", 
 		(err, res) => {
 		if (err) {
 			return result({ message: err.sqlMessage }, null);
